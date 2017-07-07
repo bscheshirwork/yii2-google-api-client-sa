@@ -1,0 +1,34 @@
+{
+  "name": "bscheshirwork/yii2-google-api-client-sa",
+  "description": "A Yii2 wrapper for the official Google API PHP Client (In case used Service Account + DwD)",
+  "version": "0.1.0",
+  "type": "yii2-extension",
+  "keywords": [
+    "yii2",
+    "google",
+    "DwD",
+    "service account"
+  ],
+  "license": "MIT",
+  "time": "2017-07-07",
+  "authors": [
+    {
+      "name": "BSCheshir",
+      "email": "bscheshir.work@gmail.com",
+      "role": "Creator"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/bscheshirwork/yii2-google-api-client-sa/issues",
+    "source": "https://github.com/bscheshirwork/yii2-google-api-client-sa"
+  },
+  "require": {
+    "yiisoft/yii2": "^2.0.12",
+    "google/apiclient": "^2.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "bscheshirwork\\gacsa\\": "src\\"
+    }
+  }
+}
