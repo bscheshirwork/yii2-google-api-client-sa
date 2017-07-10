@@ -2,10 +2,11 @@
 
 namespace bscheshirwork\gacsa;
 
-use Google_Client;
 use Yii;
 use yii\base\Component;
 use yii\base\Exception;
+use Google_Service;
+use Google_Client;
 
 /**
  * Class GoogleApiClient
