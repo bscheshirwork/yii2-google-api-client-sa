@@ -13,10 +13,6 @@ use yii\base\Exception;
  */
 class GoogleApiClient extends Component
 {
-    /**
-     * @var string Your application name
-     */
-    public $applicationName = 'My Application';
 
     /**
      * @var Object|string The API class or name
@@ -56,24 +52,24 @@ class GoogleApiClient extends Component
 
     /**
      * Gets a Google Service
-     *
-     * @return Google_Client the authorized client object
-     * @throws Exception
+     * @param null $closure function with signature function(Google_Client $client):Google_Client
+     * @return Google_Service the child of Google_Service class
      */
-    public function getService() {
-        return new $this->api($this->getClient());
+    public function getService($closure = null)
+    {
+        return new $this->api(($closure ?? function ($client) {
+                /** @var Google_Client $client */
+                return $client;
+            })($this->getClient()));
     }
+
 
     /**
      * Returns an authorized API client.
-     * $user_to_impersonate = 'email@suitedomain.com';
-     * masquerade impersonate
-     * $client->setSubject($user_to_impersonate);
-     *
      * @return Google_Client the authorized client object
      */
-    public function getClient() {
-
+    public function getClient()
+    {
         //service account
         $client = new Google_Client();
         $client->useApplicationDefaultCredentials();

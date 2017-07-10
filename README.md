@@ -37,7 +37,7 @@ Here's how to setup GMail for example, a usage sample is provided below.
         // ..
         'gmail' => [
             'class' => 'bscheshirwork\gacsa\GoogleApiClient',
-            'clientSecretPath' => '@runtime/secret-place/myprojectname-privatekeyshortdigits.json',
+            'googleApplicationCredentials' => '@runtime/secret-place/myprojectname-privatekeyshortdigits.json',
             'api' => Google_Service_Gmail::class,
         ],
 ```
@@ -53,7 +53,12 @@ Usage
 /**
  * @var $service Google_Service_Gmail
  */
-$service = Yii::$app->gmail->getService();
+$service = Yii::$app->gmail->getService(function(){
+    $userToImpersonate = 'email@suitedomain.com';
+    /** @var \Google_Client $client */
+    $client->setSubject($userToImpersonate);
+    return $client;
+});
 
 $messages = $service->users_messages->listUsersMessages('me', [
     'maxResults' => 1,
