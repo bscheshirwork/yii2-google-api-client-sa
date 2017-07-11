@@ -53,12 +53,12 @@ class GoogleApiClient extends Component
 
     /**
      * Gets a Google Service
-     * @param null $closure function with signature function(Google_Client $client):Google_Client
+     * @param null $callable function with signature function(Google_Client $client):Google_Client
      * @return Google_Service the child of Google_Service class
      */
-    public function getService($closure = null)
+    public function getService($callable = null)
     {
-        return new $this->api(($closure ?? function ($client) {
+        return new $this->api(($callable ?? function ($client) {
                 /** @var Google_Client $client */
                 return $client;
             })($this->getClient()));
